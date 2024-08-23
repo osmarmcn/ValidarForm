@@ -99,18 +99,23 @@
      }
 
      function validateSenha() {
-         const senhaValue = senha.value.trim();
-         if (senhaValue === '') {
-             setError(senha, 'A senha é obrigatória');
-             return false;
-         } else if (senhaValue.length < 6) {
-             setError(senha, 'A senha deve ter pelo menos 6 caracteres');
-             return false;
-         } else {
-             setSuccess(senha);
-             return true;
-         }
-     }
+        const senhaValue = senha.value.trim();
+    
+        // Expressão regular para validar a senha
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    
+        if (senhaValue === '') {
+            setError(senha, 'A senha é obrigatória');
+            return false;
+        } else if (!regex.test(senhaValue)) {
+            setError(senha, 'A senha deve ter pelo menos 6 caracteres, incluindo uma letra maiúscula, uma letra minúscula, um número e um caractere especial');
+            return false;
+        } else {
+            setSuccess(senha);
+            return true;
+        }
+    }
+    
 
      function validateConfirmarSenha() {
          const confirmarSenhaValue = confirmarSenha.value.trim();
