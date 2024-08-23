@@ -100,12 +100,8 @@
 
      function validateSenha() {
         const senhaValue = senha.value.trim();
-    
-        // Expressão regular para validar a senha
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&,_-])[A-Za-z\d@$!%*?&,_-]{6,}$/;
 
-
-    
         if (senhaValue === '') {
             setError(senha, 'A senha é obrigatória');
             return false;
